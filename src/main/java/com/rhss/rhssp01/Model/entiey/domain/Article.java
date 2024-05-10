@@ -1,8 +1,6 @@
 package com.rhss.rhssp01.Model.entiey.domain;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
@@ -20,9 +18,8 @@ public class Article implements Serializable {
     /**
      * 文章id
      */
-    @TableId(type = IdType.AUTO)
     @Schema(description = "文章id")
-    private Integer id;
+    private String id;
 
     /**
      * 文章标题

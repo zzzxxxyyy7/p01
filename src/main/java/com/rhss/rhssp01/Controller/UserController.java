@@ -13,7 +13,6 @@ import com.rhss.rhssp01.Services.UserControllerService;
 @RequestMapping("/user")
 @Tag(name = "用户管理接口" , description = "用户的增删改查")
 public class UserController {
-
     @Resource
     private UserControllerService userControllerService;
 
@@ -22,8 +21,4 @@ public class UserController {
     public void save(UserSaveDto userSaveDto) {
         userControllerService.save(userSaveDto);
     }
-
-
-
-
 }

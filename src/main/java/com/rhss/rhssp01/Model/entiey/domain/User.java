@@ -20,7 +20,7 @@ public class User implements Serializable {
      */
     @TableId
     @Schema(description = "用户ID")
-    private Integer id;
+    private String id;
 
     /**
      * 用户名

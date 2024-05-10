@@ -1,6 +1,7 @@
 package com.rhss.rhssp01.Services;
 
 import com.rhss.rhssp01.Model.dto.UserSaveDto;
+import com.rhss.rhssp01.Model.entiey.service.UserService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
@@ -8,7 +9,7 @@ import org.springframework.stereotype.Service;
 public class UserControllerService {
 
     @Resource
-    private UserControllerService userControllerService;
+    private UserService userService;
 
     public void save(UserSaveDto userSaveDto){
         Integer userId = userSaveDto.getId();
