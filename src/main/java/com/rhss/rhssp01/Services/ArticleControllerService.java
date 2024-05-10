@@ -3,10 +3,12 @@ package com.rhss.rhssp01.Services;
 import com.rhss.rhssp01.Model.dto.ArticleSaveDto;
 import com.rhss.rhssp01.Model.entiey.domain.Article;
 import com.rhss.rhssp01.Model.entiey.service.ArticleService;
+import com.rhss.rhssp01.Utils.RestResponse;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -19,8 +21,13 @@ public class ArticleControllerService {
      * 展示所有文章列表
      * @return
      */
-    public List<Article> getList() {
-        return articleService.list();
+    public RestResponse<List<Article>> getList() {
+        List<Article> list = articleService.list();
+        list.stream().filter( article ->
+                article.getIs_deleted() == 0
+                )
+                .forEach(list::remove);
+        return new RestResponse<List<Article>>().ok(list);
     }
 
     /**

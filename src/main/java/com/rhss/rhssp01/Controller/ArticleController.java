@@ -3,6 +3,7 @@ package com.rhss.rhssp01.Controller;
 import com.rhss.rhssp01.Model.dto.ArticleSaveDto;
 import com.rhss.rhssp01.Model.entiey.domain.Article;
 import com.rhss.rhssp01.Services.ArticleControllerService;
+import com.rhss.rhssp01.Utils.RestResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
@@ -12,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/article")
-@Tag(name = "文章管理接口")
+@Tag(name = "文章管理接口" , description = "文章的增删改查")
 public class ArticleController {
 
     @Resource
@@ -20,7 +21,7 @@ public class ArticleController {
 
     @GetMapping("/list")
     @Operation(summary = "展示所有文章列表")
-    public List<Article> getlist() {
+    public RestResponse<List<Article>> getlist() {
         return articleControllerService.getList();
     }
 
