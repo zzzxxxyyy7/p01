@@ -4,5 +4,7 @@ import lombok.Data;
 
 @Data
 public class UserSaveDto {
-    private Integer id;
+    private String id;
+    private String username;
+    private String password;
 }

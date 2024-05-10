@@ -1,14 +1,15 @@
 package com.rhss.rhssp01.Services;
 
+import com.rhss.rhssp01.Exception.P01Exception;
 import com.rhss.rhssp01.Model.dto.ArticleSaveDto;
 import com.rhss.rhssp01.Model.entiey.domain.Article;
 import com.rhss.rhssp01.Model.entiey.service.ArticleService;
 import com.rhss.rhssp01.Utils.RestResponse;
 import jakarta.annotation.Resource;
+import org.apache.commons.lang3.BooleanUtils;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -45,13 +46,20 @@ public class ArticleControllerService {
             article.setAuthor(articleSaveDto.getAuthor());
             article.setCreate_time(LocalDateTime.now());
             article.setUpdate_time(LocalDateTime.now());
-            articleService.save(article);
+            boolean save = articleService.save(article);
+            if(BooleanUtils.isFalse(save)) {
+                throw new P01Exception("新增文章失败");
+            }
         } else {
             Article article = articleService.getById(articleId);
             article.setTitle(articleSaveDto.getTitle());
             article.setContent(articleSaveDto.getContent());
             article.setAuthor(articleSaveDto.getAuthor());
             article.setUpdate_time(LocalDateTime.now());
+            boolean save = articleService.updateById(article);
+            if(BooleanUtils.isFalse(save)) {
+                throw new P01Exception("更新文章失败");
+            }
         }
     }
 

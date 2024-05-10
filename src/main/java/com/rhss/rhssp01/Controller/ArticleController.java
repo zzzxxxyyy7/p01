@@ -15,7 +15,6 @@ import java.util.List;
 @RequestMapping("/article")
 @Tag(name = "文章管理接口" , description = "文章的增删改查")
 public class ArticleController {
-
     @Resource
     private ArticleControllerService articleControllerService;
 
@@ -32,6 +31,7 @@ public class ArticleController {
     }
 
     @PostMapping("/delete")
+    @Operation(summary = "删除文章")
     public void delete(@RequestParam Integer id) {
         articleControllerService.delete(id);
     }
