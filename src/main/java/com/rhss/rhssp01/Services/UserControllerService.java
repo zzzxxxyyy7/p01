@@ -11,6 +11,12 @@ public class UserControllerService {
     private UserControllerService userControllerService;
 
     public void save(UserSaveDto userSaveDto){
-        userControllerService.save(userSaveDto);
+        Integer userId = userSaveDto.getId();
+        if (userId == null){
+            // 新增用户
+
+        }else {
+            // 更新用户
+        }
     }
 }
